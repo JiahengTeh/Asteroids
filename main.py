@@ -1,7 +1,8 @@
 import pygame
+import sys
 from constants import *
 from player import Player
-from asteroid import Asteroid
+from asteroid import *
 from asteroidfield import *
 
 def main():
@@ -34,6 +35,11 @@ def main():
         for entity in drawable:
             entity.draw(screen)
         pygame.display.flip()
+
+        for asteroid in asteroids:
+            if player.is_colliding_with(asteroid):
+                print("Game over!")
+                sys.exit()
     
 if __name__ == "__main__":
     main()
